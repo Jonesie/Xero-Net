@@ -91,7 +91,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text.Common
                     return null;
                 }
 
-#if !SILVERLIGHT && !MONOTOUCH
+#if !SILVERLIGHT && !MONOTOUCH && !NETCOREAPP
                 if (type.IsInterface || type.IsAbstract)
                 {
                     return DynamicProxy.GetInstanceFor(type).GetType();

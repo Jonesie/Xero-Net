@@ -23,7 +23,7 @@ namespace Xero.Api.Common
         public static string GetMimeType(FileInfo fileInfo)
         {
             string mimeType = "application/unknown";
-
+#if !NETCOREAPP
             RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(fileInfo.Extension.ToLower(), RegistryKeyPermissionCheck.ReadSubTree);
 
             if (regKey != null)
@@ -33,7 +33,7 @@ namespace Xero.Api.Common
                 if (contentType != null)
                     mimeType = contentType.ToString();
             }
-
+#endif
             return mimeType;
         }
 

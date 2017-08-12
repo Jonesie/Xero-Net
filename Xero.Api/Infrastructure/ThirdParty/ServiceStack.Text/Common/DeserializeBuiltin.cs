@@ -64,7 +64,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text.Common
                 return value => DateTimeSerializer.ParseTimeSpan(value);
             if (typeof(T) == typeof(TimeSpan?))
                 return value => DateTimeSerializer.ParseNullableTimeSpan(value);
-#if !MONOTOUCH && !SILVERLIGHT && !XBOX && !ANDROID
+#if !MONOTOUCH && !SILVERLIGHT && !XBOX && !ANDROID && !NETCOREAPP
             if (typeof(T) == typeof(System.Data.Linq.Binary))
                 return value => new System.Data.Linq.Binary(Convert.FromBase64String(value));
 #endif

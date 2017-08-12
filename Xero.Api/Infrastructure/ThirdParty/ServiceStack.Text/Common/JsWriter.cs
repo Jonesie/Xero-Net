@@ -246,7 +246,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text.Common
         		{ typeof(Uri), Serializer.WriteObjectString },
         		{ typeof(Type), WriteType },
         		{ typeof(Exception), Serializer.WriteException },
-#if !MONOTOUCH && !SILVERLIGHT && !XBOX  && !ANDROID
+#if !MONOTOUCH && !SILVERLIGHT && !XBOX && !ANDROID && !NETCOREAPP
                 { typeof(System.Data.Linq.Binary), Serializer.WriteLinqBinary },
 #endif
         	};

@@ -554,7 +554,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text
             return type.HasAttribute<T>();
         }
 
-#if !SILVERLIGHT && !MONOTOUCH 
+#if !SILVERLIGHT && !MONOTOUCH  && !NETCOREAPP
         static readonly Dictionary<Type, TypeAccessor> typeAccessorMap 
             = new Dictionary<Type, TypeAccessor>();
 #endif
@@ -563,7 +563,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text
         {
             var dataContract = type.FirstAttribute<DataContractAttribute>();
 
-#if !SILVERLIGHT && !MONOTOUCH && !XBOX
+#if !SILVERLIGHT && !MONOTOUCH && !XBOX && !NETCOREAPP
             if (dataContract == null && Env.IsMono)
                 return type.GetWeakDataContract();
 #endif
@@ -575,7 +575,7 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text
             var dataMember = pi.CustomAttributes(typeof(DataMemberAttribute), false)
                 .FirstOrDefault() as DataMemberAttribute;
 
-#if !SILVERLIGHT && !MONOTOUCH && !XBOX
+#if !SILVERLIGHT && !MONOTOUCH && !XBOX && !NETCOREAPP
             if (dataMember == null && Env.IsMono)
                 return pi.GetWeakDataMember();
 #endif
@@ -587,14 +587,14 @@ namespace Xero.Api.Infrastructure.ThirdParty.ServiceStack.Text
             var dataMember = pi.CustomAttributes(typeof(DataMemberAttribute), false)
                 .FirstOrDefault() as DataMemberAttribute;
 
-#if !SILVERLIGHT && !MONOTOUCH && !XBOX
+#if !SILVERLIGHT && !MONOTOUCH && !XBOX && !NETCOREAPP
             if (dataMember == null && Env.IsMono)
                 return pi.GetWeakDataMember();
 #endif
             return dataMember;
         }
 
-#if !SILVERLIGHT && !MONOTOUCH && !XBOX
+#if !SILVERLIGHT && !MONOTOUCH && !XBOX  && !NETCOREAPP
         public static DataContractAttribute GetWeakDataContract(this Type type)
         {
             var attr = type.CustomAttributes().FirstOrDefault(x => x.GetType().Name == DataContract);

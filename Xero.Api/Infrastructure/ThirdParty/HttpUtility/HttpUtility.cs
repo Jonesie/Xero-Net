@@ -40,7 +40,9 @@ using System.Web;
 
 namespace Xero.Api.Infrastructure.ThirdParty.HttpUtility
 {
-	[AspNetHostingPermission (SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+#if !NETCOREAPP
+    [AspNetHostingPermission (SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+#endif
 	public sealed class HttpUtility
 	{
 		sealed class HttpQsCollection : NameValueCollection

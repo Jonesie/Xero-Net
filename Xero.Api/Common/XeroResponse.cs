@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if !NETCOREAPP
 using System.Data.Linq;
+#endif
 using System.Linq;
 using System.Runtime.Serialization;
 using Xero.Api.Infrastructure.Interfaces;
